@@ -1,0 +1,5 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  address: 16 Nguyen Hue Phuong Ben Nghe Quan 1 Ho Chi Minh City  
+  phoneNumber: (+84) 93 674 1601
