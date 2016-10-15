@@ -2,8 +2,7 @@
     <ul>
     <% @sections.each do |section| %>
 		<li>
-		<%= link_to section.name, ''
-			<%= section.name %>
+		<%= link_to section.name, section %>
 		</li>
 	<% end %>
     </ul>

@@ -1,18 +1,16 @@
 <p>
-  <strong>Name:</strong>
-  <%= @section.name %>
+  <strong><%= @section.name %></strong>
 </p>
 <p>
 <% @section.food_items.each do |food_item| %>
 	<div class="card">
-	  <img class="card-img-top" src="..." alt="Card image cap">
+	  <img class="card-img-top img-fluid" src="<%= food_item.imageUrl %>" alt="Card image cap">
 	  <div class="card-block">
 	    <h4 class="card-title"><%= food_item.name %></h4>
 	    <p class="card-text"><%= food_item.description %></p>
-	    <p class="card-text"><strong><%= food_item.price %> VND</strong></p>
+	    <p class="card-text"><strong><%= number_with_delimiter(food_item.price, :delimiter => ',') %> VND</strong></p>
 	    <a href="#" class="btn btn-primary">Order this item</a>
 	  </div>
 	</div>
 <% end %>
-<%= link_to 'Edit', edit_section_path(@section) %> |
 <%= link_to 'Back', sections_path %>

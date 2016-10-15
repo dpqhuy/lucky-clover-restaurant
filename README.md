@@ -4,7 +4,7 @@
 
 Submitted by: Dinh Phan Quoc Huy
 
-Time spent: 4 hours spent in total
+Time spent: 8 hours spent in total
 
 URL: **heroku-app-url**
 
