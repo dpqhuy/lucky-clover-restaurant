@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<div style="margin-bottom: 1em">
+	<p>Sort by: </p>
+	<% @sort_by = params[:sort_by] %>
+	<% @sort_order = params[:sort_order] %>
+
+	<%= link_to "Alphabetical", params.merge(:sort_by => "name", :sort_order => "asc").permit!, 
+					class: (@sort_by == "name" ? "btn btn-primary" : "btn btn-link") %>
+	<%= link_to "Price Low To High", params.merge(:sort_by => "price", :sort_order => "asc").permit!,
+					class: ((@sort_by == "price" && @sort_order != "desc") ? "btn btn-primary" : "btn btn-link") %>
+	<%= link_to "Price High To Low", params.merge(:sort_by => "price", :sort_order => "desc").permit!,
+					class: ((@sort_by == "price" && @sort_order == "desc") ? "btn btn-primary" : "btn btn-link") %>
+</div>
+<% @food_items.each do |food_item| %>
+	<%= render food_item %>
+<% end %>
+<%= link_to 'Back to Menu', menus_path %>

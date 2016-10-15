@@ -1,0 +1,9 @@
+<div class="jumbotron banner">
+    <ul>
+    <% @sections.each do |section| %>
+		<li>
+		<%= link_to section.name, food_items_path(:type => "#{section.name}") %>
+		</li>
+	<% end %>
+    </ul>
+</div>

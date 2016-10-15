@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-  resources :sections
-  get 'contact_us/index'
+  resources :food_items
+  get 'food_items' => 'food_items#index'
 
-  get 'menu/index'
+  get 'food_items/show'
+
+  resources :contact_us
+  get 'contact_us' => 'contact_us#index'
+
+  resources :menus
+  	get 'menus' => 'menus#index'
 
   get 'home/index'
 

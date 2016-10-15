@@ -4,11 +4,7 @@ class SectionsController < ApplicationController
   # GET /sections
   # GET /sections.json
   def index
-     if params[:id]
-      @sections = Section.search(params[:id]).order("name ASC").first
-    else
       @sections = Section.all
-    end
   end
 
   # GET /sections/1
@@ -16,6 +12,26 @@ class SectionsController < ApplicationController
   def show
     # You could add a check to see if id is a string or an integer
     @section = Section.where(name: params[:id].titlecase).first 
+    if params[:sort_by]
+      @sort_by = params[:sort_by]
+      @sort_order = 1
+      if params[:sort_order] && "desc".casecmp(params[:sort_order])
+        @sort_order = -1
+      end
+
+      @temp = @section.food_items
+
+      case @sort_by
+        when "name"
+          @temp = @temp.sort_by {|f| f[:name].downcase}
+        when "price"
+          @temp = @temp.sort_by {|f| f[:price] * @sort_order}
+        else
+      end
+      logger.debug "FIRST IS: #{@temp.first.name}"
+      logger.debug "ACTUAL FIRST IS: #{@section.food_items.first.name}"
+      @section.food_items = @temp
+    end
   end
 
   # GET /sections/new

@@ -1,8 +1,8 @@
 <p>
-  <strong><%= @section.name %></strong>
+  <strong><%= section.name %></strong>
 </p>
 <p>
-<% @section.food_items.each do |food_item| %>
+<% section.food_items.each do |food_item| %>
 	<div class="card">
 	  <img class="card-img-top img-fluid" src="<%= food_item.imageUrl %>" alt="Card image cap">
 	  <div class="card-block">
@@ -13,4 +13,3 @@
 	  </div>
 	</div>
 <% end %>
-<%= link_to 'Back', sections_path %>
