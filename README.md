@@ -4,9 +4,9 @@
 
 Submitted by: Dinh Phan Quoc Huy
 
-Time spent: 15 hours spent in total
+Time spent: 16 hours spent in total
 
-URL: **heroku-app-url**
+URL: https://fast-temple-92894.herokuapp.com/
 
 ## User Stories
 
@@ -58,13 +58,22 @@ The following **known issues**:
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](path-to-your-GIF-file)
+![Video Walkthrough](week1-walkthrough.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+
+I got many issues:
+
+* First I desgined url like /section/[:name] but i sawt that i can't sort the @section.food_items ( Maybe Rails restrict this). So that I change approach to /food_items/[:section_name]
+
+* Second is I can not route the Order#show without params[:id] so I work around by using url like "/orders/ "
+
+* Third is it works perfectly on local but not on Heroku, the mistake is I'm not put tether before bootstrap in application.js file. I want to say thanks to Harley because of his help.
 
 ## License
 
