@@ -1,10 +1,10 @@
-# CoderRestaurant Website
+# LuckyCloverRestaurant Website
 
 **Coder Restaurant** is a Ruby on Rails restaurant website let users order foods.
 
 Submitted by: Dinh Phan Quoc Huy
 
-Time spent: 12 hours spent in total
+Time spent: 15 hours spent in total
 
 URL: **heroku-app-url**
 
