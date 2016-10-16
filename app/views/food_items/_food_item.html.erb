@@ -2,9 +2,18 @@
   <img class="card-img-top img-thumbnail" src="<%= food_item.imageUrl %>" alt="Card image cap">
   <div class="card-block">
     <h4 class="card-title"><%= food_item.name %></h4>
-    <h4 class="card-subtitle"><%= food_item.section.name %></h4>
-    <p class="card-text"><%= food_item.description %></p>
-    <p class="card-text"><strong><%= number_with_delimiter(food_item.price, :delimiter => ',') %> VND</strong></p>
-    <a href="#" class="btn btn-primary">Order this item</a>
+
+	<%= form_for order_item, remote: true do |f| %>
+	  <h4 class="text-right">Unit Price: <span style="color: green"><%= number_with_delimiter food_item.price %> VND</span></h4>
+	  <div class="input-group">
+	    <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+	    <div class="input-group-btn">
+	      <%= f.hidden_field :food_item_id, value: food_item.id %>
+	      <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+	    </div>
+	  </div>
+	<% end %>
+    <%= link_to "Detail", food_item_path(food_item.id), class: "btn btn-primary"%>
+
   </div>
 </div>

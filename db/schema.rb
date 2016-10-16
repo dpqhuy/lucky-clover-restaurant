@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161015041304) do
+ActiveRecord::Schema.define(version: 20161016050032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,38 @@ ActiveRecord::Schema.define(version: 20161015041304) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["section_id"], name: "index_food_items_on_section_id", using: :btree
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "unit_price"
+    t.integer  "quantity"
+    t.integer  "total_price"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "food_item_id"
+    t.index ["food_item_id"], name: "index_order_items_on_food_item_id", using: :btree
+    t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  end
+
+  create_table "order_statuses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "subtotal"
+    t.integer  "shipping"
+    t.integer  "total"
+    t.integer  "order_status_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.string   "customer_name"
+    t.string   "customer_phone_number"
+    t.string   "customer_address"
+    t.string   "customer_email"
+    t.index ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -40,4 +72,7 @@ ActiveRecord::Schema.define(version: 20161015041304) do
   end
 
   add_foreign_key "food_items", "sections"
+  add_foreign_key "order_items", "food_items"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "order_statuses"
 end

@@ -13,11 +13,15 @@ class FoodItemsController < ApplicationController
   	if params[:type]
   		@section = Section.where(name: params[:type].titlecase).first
   		@food_items = FoodItem.where(section: @section).order(@order_str)
-  	else
+  	elsif params[:search]
+       @food_items = FoodItem.search(params[:search]).order(@order_str) 
+    else
   		@food_items = FoodItem.all.order(@order_str)
   	end
+    @order_item = current_order.order_items.new
   end
 
   def show
+    @food_item = FoodItem.where(id: params[:id]).first
   end
 end

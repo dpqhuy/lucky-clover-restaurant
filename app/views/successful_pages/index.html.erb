@@ -1,0 +1,28 @@
+<div class="jumbotron">
+  <h1 class="display-3">THANK YOU!</h1>
+  <p class="lead">This is detail of your order:</p>
+  <p>List Item:</p>
+  <ul>
+  <% @order.order_items.each do |order_item| %>
+    <li>
+      <%= "#{order_item.food_item.name} x #{order_item.quantity}" %>
+    </li>
+  <% end %>
+  </ul>
+  <hr class="m-y-2">
+  <% @total = @order.subtotal + 20000 %>
+  <p>Total costs: <%= number_with_delimiter @total %> VND (Including shipping cost: 20,000 VND)</p>
+  <hr class="m-y-2">
+  <p class="lead">User Information:</p>
+  <ul>
+    <li><%= "Name: #{@order.customer_name}" %></li>
+    <li><%= "Phone Number: #{@order.customer_phone_number}" %></li>
+    <li><%= "Address: #{@order.customer_address}" %></li>
+    <li><%= "Email: #{@order.customer_email}" %></li>
+  </ul>
+  <p>At: <%= @order.updated_at.strftime("%d.%m.%Y %T") %></p>
+  <hr class="m-y-2">
+  <p class="lead">
+    <%= link_to "Back to food item list", food_items_path, class:"btn btn-primary" %>
+  </p>
+</div>

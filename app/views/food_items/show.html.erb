@@ -1,2 +1,9 @@
-<h1>FoodItems#show</h1>
-<p>Find me in app/views/food_items/show.html.erb</p>
+<div class="card">
+  <img class="card-img-top img-fluid" src="<%= @food_item.imageUrl %>" alt="Card image cap">
+  <div class="card-block">
+    <h4 class="card-title"><%= @food_item.name %></h4>
+    <h4 class="card-subtitle"><%= @food_item.section.name %></h4>
+    <p><%= @food_item.description %></p>
+    <p class="card-text"><strong><%= number_with_delimiter(@food_item.price, :delimiter => ',') %> VND</strong></p>
+  </div>
+</div>
