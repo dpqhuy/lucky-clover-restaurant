@@ -1,6 +1,7 @@
 <div class="food-cart">
   <%= render "food_cart" %>
 </div>
+<% if @order.nil? %>
 <div class="cart-customer-info">
 <%= form_for @order do |f| %>
 	  <div class="input-group">
@@ -27,3 +28,4 @@
 	  </div>
 	<% end %>
 </div>
+<% end %>
