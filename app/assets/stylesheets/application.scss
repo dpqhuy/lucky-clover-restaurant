@@ -1,2 +1,14 @@
 // Custom bootstrap variables must be set or imported before bootstrap itself.
 @import "bootstrap";
+
+.banner {
+	background-color: #32CD32;
+
+	h1,p {
+	 	color: white;
+	}
+	.content-box {
+		display: table-cell;
+   		vertical-align: middle;
+	}
+};
