@@ -15,5 +15,4 @@
   <% @order_items.each do |order_item| %>
     <%= render 'carts/cart_row', food_item: order_item.food_item, order_item: order_item, show_total: true %>
   <% end %>
-  <%= link_to "go back", food_items_path %>
 <% end %>
